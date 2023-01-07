@@ -15,6 +15,9 @@ import java.util.List;
 public class MyJsonParser {
     private List<Movie> movies = new ArrayList<>();
 
+    public MyJsonParser(InputStream inputStream) {
+        parse(inputStream);
+    }
 
     private void parse(InputStream inputStream){
         String jsonString = null;
