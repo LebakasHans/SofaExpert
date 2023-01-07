@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyJsonParser {
+public class MyJSONParser {
     private List<Movie> movies = new ArrayList<>();
 
-    public MyJsonParser(InputStream inputStream) {
+    public MyJSONParser(InputStream inputStream) {
         parse(inputStream);
     }
 

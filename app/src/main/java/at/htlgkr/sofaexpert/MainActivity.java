@@ -2,19 +2,18 @@ package at.htlgkr.sofaexpert;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.GridView;
 
-import com.squareup.picasso.Picasso;
-
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String jsonFile = "movies.json";
     private GridView gridView_Pictures;
     private MovieAdapter mMovieAdapter;
-    private List<Movie> movies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +24,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpGridView() {
-        MyJsonParser myJsonParser = null;
+        MyJSONParser myJsonParser = null;
+
         try {
-            myJsonParser = new MyJsonParser(getAssets().open(jsonFile));
+            myJsonParser = new MyJSONParser(getAssets().open(jsonFile));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        List<Movie> movies = myJsonParser.getMovies();
         gridView_Pictures = findViewById(R.id.gridView_Pictures);
-        mMovieAdapter = new MovieAdapter(this, R.layout.gridview_pictures_items_layout, myJsonParser.getMovies());
+        mMovieAdapter = new MovieAdapter(this, R.layout.gridview_pictures_items_layout, movies);
         gridView_Pictures.setAdapter(mMovieAdapter);
 
         gridView_Pictures.setOnItemClickListener((parent, view, position, id) ->{
-
-                });
+            Intent intent = new Intent(this, Detailed_Movie_Activity.class);
+            intent.putExtra("movie", movies.get(position));
+            startActivity(intent);
+        });
     }
 }

@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class MovieAdapter extends BaseAdapter {
-    private static final String PICTURE_BASEPATH = "http://image.tmdb.org/t/p/w154/";
+    public static final String PICTURE_BASEPATH = "http://image.tmdb.org/t/p/w154/";
     private List<Movie> movies;
     private int layoutId;
     private LayoutInflater inflater;

@@ -1,8 +1,9 @@
 package at.htlgkr.sofaexpert;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Movie {
+public class Movie implements Serializable {
     private int vote_count;
     private int id;
     private boolean video;
